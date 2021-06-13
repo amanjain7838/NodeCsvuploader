@@ -1,7 +1,7 @@
 module.exports = {
-    HOST: "localhost",
-    USER: "root",
-    PASSWORD: "123456",
+    HOST: process.env.databasehost,
+    USER: process.env.dbuser,
+    PASSWORD: process.env.dbpassword,
     DB: "csvuploader",
     dialect: "mysql",
     pool: {

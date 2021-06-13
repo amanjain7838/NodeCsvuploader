@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "devstart": "nodemon ./bin/www",
     "serverstart": "DEBUG=express-locallibrary-tutorial:* npm run devstart",
-    "publishToHeroku": "cd ../ && git subtree push --prefix server nodecsvuploader master || true"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix client && npm run build --prefix client"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
