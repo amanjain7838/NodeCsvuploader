@@ -1,6 +1,7 @@
 module.exports = {
     HOST: process.env.databasehost,
     USER: process.env.dbuser,
+    PORT: process.env.port,
     PASSWORD: process.env.dbpassword,
     DB: "csvuploader",
     dialect: "mysql",
