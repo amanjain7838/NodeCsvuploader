@@ -35,4 +35,5 @@ npm run serverstart<br>
 cd client <br>
 npm install<br>
 npm start<br> 
-http://localhost:3000
+React Project will run on: http://localhost:3000
+Backend will run on: http://localhost:3080
