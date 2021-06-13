@@ -12,7 +12,7 @@ const csv = require('fast-csv');
 
 var router = express.Router();
 
-router.post('/', async function(req, res, next) {
+router.use('/', async function(req, res, next) {
   let params=req.body;
   let draw=params['draw'];
   let totalcount=await CSV.count();
