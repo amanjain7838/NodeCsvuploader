@@ -24,6 +24,7 @@ router.get('/getusers',async function(req, res, next) {
 });
 
 router.post('/import',upload.single('csv'), function(req, res, next) {
+let allpromises=[];
   fs.createReadStream(req.file.path)
   .pipe(csv.parse({ headers: false }))
   .on("error", (error) => {
@@ -35,11 +36,11 @@ router.post('/import',upload.single('csv'), function(req, res, next) {
         email:row[1],
         phones:row[2]
     };
-    await saveUser(userDetail);
+    allpromises.push(saveUser(userDetail));
   })
   .on("end", () => {
     apiResponse.status=1;
-	res.send(apiResponse);
+    Promise.all(allpromises).then(res.send(apiResponse))
   });
 });
 
