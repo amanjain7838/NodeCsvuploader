@@ -36,3 +36,45 @@
     transform: rotate(360deg);
   }
 }
+.nav-link{
+  text-decoration: underline !important;
+  color: #1c3678 !important;
+}
+.navlink-red{
+  display: block;
+  font-weight: 700;
+  background-color: #f4cccc !important;
+}
+.bg-custom-light{
+  background-color: #e9edee !important;
+}
+.upload-panel{
+  display: flex;
+  vertical-align: middle;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+.upload-panel-center{
+  background: #e9edee;
+  height: 100px;
+  width: 250px;
+  display: flex;
+  vertical-align: middle;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border: 2px dashed #858585;
+  border-radius: 20px;
+  cursor: grab;
+}
+.tr-phone{
+  background-color: #e9edee;
+  padding: 2px;
+  border: 1px solid;
+}
+.idui-popover{
+  padding:0 !important;
+}
