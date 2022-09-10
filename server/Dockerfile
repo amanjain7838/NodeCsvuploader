@@ -1,0 +1,11 @@
+FROM node:lts-slim
+ENV NODE_ENV production
+RUN mkdir -p /usr/src/app && chown -R node:node /usr/src/app
+WORKDIR /usr/src/app
+COPY . .
+USER root
+RUN npm install 
+# RUN npm install -g nodemon
+# COPY . .
+EXPOSE 5000
+CMD ["npm", "run", "start"]
