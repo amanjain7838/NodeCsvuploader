@@ -23,6 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 client/.env.development
 .env.production
-.env.development
 tmp
 uploads
