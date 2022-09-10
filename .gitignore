@@ -26,4 +26,3 @@ client/.env.development
 .env.development
 tmp
 uploads
-.env

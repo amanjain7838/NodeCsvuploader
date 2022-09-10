@@ -1,6 +1,6 @@
 module.exports = {
     HOST: process.env.MYSQL_HOST,
-    USER: "root",
+    USER: process.env.MYSQL_USER,
     PORT: process.env.MYSQL_PORT,
     PASSWORD: process.env.MYSQL_PASSWORD,
     DB: process.env.MYSQL_DATABASE,
