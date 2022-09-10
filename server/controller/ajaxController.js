@@ -29,13 +29,13 @@ router.post('/import',upload.single('csv'), function(req, res, next) {
   .on("error", (error) => {
     throw error.message;
   })
-  .on("data", (row) => {
+  .on("data", async (row) => {
     let userDetail={
         name:row[0],
         email:row[1],
         phones:row[2]
     };
-    saveUser(userDetail);
+    await saveUser(userDetail);
   })
   .on("end", () => {
     apiResponse.status=1;

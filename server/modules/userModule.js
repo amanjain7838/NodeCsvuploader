@@ -11,8 +11,9 @@ module.exports.getUsers=()=>{
         include: [{
             model: PhoneModel,
             attributes: { exclude: ['id'] },
-        },
-    ]};
+        }],
+        order:[['id','desc']]
+    };
     return CsvModel.findAll(fetchCondition);
 }
 module.exports.saveUser=async(user)=>{
