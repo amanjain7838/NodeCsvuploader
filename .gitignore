@@ -24,7 +24,6 @@ yarn-error.log*
 client/.env.development
 .env.production
 .env.development
-package-lock.json
 tmp
 uploads
 .env

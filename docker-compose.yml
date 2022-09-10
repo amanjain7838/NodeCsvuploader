@@ -1,0 +1,61 @@
+version: "3"
+services:
+    mysqldb:
+        image: mysql
+        restart: always
+        env_file: ./.env
+        environment:
+            MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+            MYSQL_DATABASE: $MYSQL_DATABASE
+        ports:
+            - $MYSQL_LOCAL_PORT:$MYSQL_DOCKER_PORT
+        volumes: 
+            - db-config:/etc/mysql
+            - db-data:/var/lib/mysql:rw
+            - ./db/backup/files/:/data_backup/data
+    frontend:
+        container_name: nodecsvuploader_client
+        build:
+            context: ./client
+            dockerfile: Dockerfile.development
+        image: amanjain78/nodecsvuploader_client:latest
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./client:/usr/src/app
+            # - ./client/node_modules:/usr/src/app/node_modules
+            - exclude:/usr/src/app/node_modules
+    backend:
+        container_name: nodecsvuploader_backend
+        build:
+            context: ./server
+            dockerfile: Dockerfile.development
+        image: amanjain78/nodecsvuploader_backend:latest
+        ports:
+            - "5000:3000"
+        volumes:
+            - ./server:/usr/src/app
+            - node_modules:/usr/src/app/node_modules
+        depends_on:
+            - mysqldb
+        environment:
+            - MYSQL_HOST=$MYSQL_HOST
+            - MYSQL_PASSWORD=$MYSQL_ROOT_PASSWORD
+            - MYSQL_DATABASE=$MYSQL_DATABASE
+            - MYSQL_PORT=$MYSQL_DOCKER_PORT
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        restart: always
+        environment:
+            PMA_HOST: mysqldb
+            PMA_USER: $MYSQL_USER
+            PMA_PASSWORD: $MYSQL_ROOT_PASSWORD
+        depends_on:
+            - mysqldb
+        ports:
+            - "8080:80"
+volumes: 
+  db-config:
+  db-data:
+  node_modules:
+  exclude:
