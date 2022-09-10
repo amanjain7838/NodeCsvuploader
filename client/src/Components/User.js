@@ -15,14 +15,14 @@ const User=()=>{
     return (
         <div className='container-fluid'>
             <div className='row justify-content-center pt-2'>
-                <div className='col-6'>
-                    <table className='table table-bordered'>
+                <div className='col-8'>
+                    <table className='table table-bordered table-sm table-hover'>
                         <thead>
                             <tr>
                                 <th scope="col">id</th>
                                 <th scope="col">name</th>
                                 <th scope="col">email</th>
-                                <th scope="col">phones</th>
+                                <th scope="col-7">phones</th>
                                 <th scope="col">creation date</th>
                             </tr>
                         </thead>
